@@ -6,8 +6,6 @@ class City():
     self.lat = lat
     self.lon = lon
     
-SF = City('SanFran', -101, 22)
-print(SF.name)
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
 
@@ -21,15 +19,8 @@ print(SF.name)
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
 import csv
-# with open('src/cityreader/cities.csv', 'r') as file:
-#     reader = csv.reader(file)
-#     for row in reader:
-#         print(City(row[0], row[3], row[4]))
 
 cities = []
-
-print(cities)
-
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
@@ -37,7 +28,8 @@ def cityreader(cities=[]):
   # `cities` list
   with open('src/cityreader/cities.csv', 'r') as file:
     reader = csv.reader(file)
-    for row in reader:
+    update = list(reader)
+    for row in update[1:]:
       cities.append(City(row[0], row[3], row[4]))    
       
     return cities
